@@ -8,11 +8,6 @@ var angularUtils = require('../util.js');
 
 var Generator = module.exports = function Generator() {
   ScriptBase.apply(this, arguments);
-  this.option('uri', {
-    desc: 'Allow a custom uri for routing',
-    type: String,
-    required: false
-  });
 
   var bower = require(path.join(process.cwd(), 'bower.json'));
   var match = require('fs').readFileSync(path.join(
@@ -60,7 +55,8 @@ Generator.prototype.rewriteAppJs = function () {
     needle: '.otherwise',
     splicable: [
       "  templateUrl: 'views/" + this.name.toLowerCase() + ".html'" + (coffee ? "" : "," ),
-      "  controller: '" + this.classedName + "Ctrl'"
+      "  controller: '" + this.classedName + "Ctrl'" + (coffee ? "" : "," ),
+      "  controllerAs: 'vm'"
     ]
   };
 

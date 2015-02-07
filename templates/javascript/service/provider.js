@@ -1,32 +1,39 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name <%= scriptAppName %>.<%= cameledName %>
- * @description
- * # <%= cameledName %>
- * Provider in the <%= scriptAppName %>.
- */
-angular.module('<%= scriptAppName %>')
-  .provider('<%= cameledName %>', function () {
+(function () {
 
-    // Private variables
-    var salutation = 'Hello';
+	function provider () {
 
-    // Private constructor
-    function Greeter() {
-      this.greet = function () {
-        return salutation;
-      };
-    }
+		// Private variables
+		var salutation = 'Hello';
 
-    // Public API for configuration
-    this.setSalutation = function (s) {
-      salutation = s;
-    };
+		// Private constructor
+		function Greeter() {
+			this.greet = function () {
+				return salutation;
+			};
+		}
 
-    // Method for instantiating
-    this.$get = function () {
-      return new Greeter();
-    };
-  });
+		// Public API for configuration
+		this.setSalutation = function (s) {
+			salutation = s;
+		};
+
+		// Method for instantiating
+		this.$get = function () {
+			return new Greeter();
+		};
+	}
+
+	/**
+	* @ngdoc service
+	* @name <%= scriptAppName %>.<%= cameledName %>
+	* @description
+	* # <%= cameledName %>
+	* Provider in the <%= scriptAppName %>.
+	*/
+	angular.module('<%= scriptAppName %>')
+		.provider('<%= cameledName %>', provider);
+
+})();
+

@@ -1,14 +1,8 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name <%= scriptAppName %>.<%= cameledName %>
- * @description
- * # <%= cameledName %>
- * Factory in the <%= scriptAppName %>.
- */
-angular.module('<%= scriptAppName %>')
-  .factory('<%= cameledName %>', function () {
+(function () {
+
+  function factory () {
     // Service logic
     // ...
 
@@ -20,4 +14,17 @@ angular.module('<%= scriptAppName %>')
         return meaningOfLife;
       }
     };
-  });
+  }
+
+  /**
+  * @ngdoc service
+  * @name <%= scriptAppName %>.<%= cameledName %>
+  * @description
+  * # <%= cameledName %>
+  * Factory in the <%= scriptAppName %>.
+  */
+  angular.module('<%= scriptAppName %>')
+    .factory('<%= cameledName %>', factory);
+
+})();
+
